@@ -1,13 +1,11 @@
 // Generate a list of HSL colors which are not too close together visually
 
-/* Generate a LAB color
+/* LAB color
  *  L =  0   to 100
  *  A = -100 to 100
  *  B = -100 to 100
 */
-
 class LAB {
-
   /** d65 standard illuminant in XYZ */
   static d65 = [95.05, 100, 108.9];
 
@@ -107,6 +105,7 @@ class LAB {
   }
 }
 
+/* Calculate the difference between two Lab colors */
 function deltaE00(lab1, lab2) {
   const l1 = lab1.L
   const a1 = lab1.a
@@ -182,9 +181,10 @@ function deltaE00(lab1, lab2) {
   return deltaE;
 }
 
-const colors = []
-const deltaEThreshold = 10
-const numColors = 20
+/* Main logic */
+const colors = [] // Accumulate our colors as accepted
+const deltaEThreshold = 10 // difference threshold allowed between colors
+const numColors = 20 // How many colors
 
 function generateColors () {
   while (colors.length < numColors) {
@@ -193,7 +193,7 @@ function generateColors () {
     const b = Math.round(Math.random() * 200 - 100)
     const lab = new LAB(L,a,b)
     if (colors.some(color => deltaEThreshold > deltaE00(lab, color))) {
-      // console.log('rejected')
+      // console.log('rejected') // Too similar to another existing color
     } else {
       colors.push(lab)
     }
@@ -202,7 +202,6 @@ function generateColors () {
     const hsl = color.toHSL()
     console.log (hsl)
   })
-
 }
 
 generateColors()
