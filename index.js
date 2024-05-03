@@ -188,9 +188,10 @@ function deltaE00(lab1, lab2) {
 
 const colors = []
 const deltaEThreshold = 10
+const numColors = 20
 
 function generateColors () {
-  while (colors.length < 20) {
+  while (colors.length < numColors) {
     const L = Math.round(Math.random() * 100)
     const a = Math.round(Math.random() * 200 - 100)
     const b = Math.round(Math.random() * 200 - 100)
