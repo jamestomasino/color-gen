@@ -188,7 +188,7 @@ const numColors = 20 // How many colors
 
 function generateColors () {
   while (colors.length < numColors) {
-    const L = Math.round(Math.random() * 100)
+    const L = Math.round(Math.random() * 40 + 60) // skew to pastel
     const a = Math.round(Math.random() * 200 - 100)
     const b = Math.round(Math.random() * 200 - 100)
     const lab = new LAB(L,a,b)
@@ -200,7 +200,6 @@ function generateColors () {
   }
   colors.map(color => {
     const hsl = color.toHSL()
-    console.log (hsl)
   })
 }
 
