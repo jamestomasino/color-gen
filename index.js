@@ -11,10 +11,6 @@ class LAB {
   /** d65 standard illuminant in XYZ */
   static d65 = [95.05, 100, 108.9];
 
-  /** Round values smaller than maxZeroTolerance to zero in computations which
-  can fluctuate greatly near zero */
-  static maxZeroTolerance = Math.pow(10, -12);
-
   constructor (l, a, b) {
     this.L = l
     this.a = a
